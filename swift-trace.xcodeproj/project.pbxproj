@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		01F36E6D1CB4D0E400296359 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E6C1CB4D0E400296359 /* main.swift */; };
+		01F36E741CB4D28300296359 /* vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E731CB4D28300296359 /* vec3.swift */; };
+		01F36E771CB4D31400296359 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E751CB4D31400296359 /* camera.swift */; };
+		01F36E781CB4D31400296359 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E761CB4D31400296359 /* ray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,6 +28,9 @@
 /* Begin PBXFileReference section */
 		01F36E691CB4D0E400296359 /* swift-trace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-trace"; sourceTree = BUILT_PRODUCTS_DIR; };
 		01F36E6C1CB4D0E400296359 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		01F36E731CB4D28300296359 /* vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vec3.swift; sourceTree = "<group>"; };
+		01F36E751CB4D31400296359 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
+		01F36E761CB4D31400296359 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ray.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +64,9 @@
 			isa = PBXGroup;
 			children = (
 				01F36E6C1CB4D0E400296359 /* main.swift */,
+				01F36E731CB4D28300296359 /* vec3.swift */,
+				01F36E751CB4D31400296359 /* camera.swift */,
+				01F36E761CB4D31400296359 /* ray.swift */,
 			);
 			path = "swift-trace";
 			sourceTree = "<group>";
@@ -119,6 +128,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				01F36E781CB4D31400296359 /* ray.swift in Sources */,
+				01F36E771CB4D31400296359 /* camera.swift in Sources */,
+				01F36E741CB4D28300296359 /* vec3.swift in Sources */,
 				01F36E6D1CB4D0E400296359 /* main.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
