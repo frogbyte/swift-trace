@@ -44,7 +44,7 @@ func Refract(v v: Vec3, n: Vec3, ni_over_nt: Double) -> Vec3? {
 func Schlick(cosine: Double, iof: Double) -> Double {
 	var r0 = (1-iof) / (1+iof)
 	r0 = r0*r0
-	return r0 + (1-r0)*pow((1 - cosine), 2.5)
+	return r0 + (1-r0)*pow((1 - cosine), 5)
 }
 
 protocol Material {
@@ -89,37 +89,32 @@ struct Dielectric: Material {
 	let albedo: Vec3
 	let iof: Double
 	
-	func scatter(r_in r_in: Ray, rec: HitRecord) -> (scattered:Ray, attenuation: Vec3) {
+	func scatter(r_in r_in: Ray, rec: HitRecord) -> (scattered:Ray, attenuation: Vec3) {		
+		let attenuation = albedo
 		let reflected = Reflect(v: r_in.direction, n: rec.normal)
 
-		let attenuation = albedo
-		var outward_normal: Vec3
-		var scattered: Ray
-		var ni_over_nt: Double
-		var cosine: Double
-		
+		var scattered = Ray(rec.p, reflected)
+
+		var normal = rec.normal
+//		fputs("Hit normal         : \(normal).\n", __stderrp)
+		var ni_over_nt = 1.0 / iof
+		var cosine = -dot(r_in.direction, rec.normal) / r_in.direction.length
+
+		// Inside the object
 		if dot(r_in.direction, rec.normal) > 0 {
-			outward_normal = -rec.normal
+			normal = -rec.normal
+//			fputs("Reversed Hit normal: \(normal).\n", __stderrp)
 			ni_over_nt = iof
 			cosine = iof * dot(r_in.direction, rec.normal) / r_in.direction.length
-		} else {
-			outward_normal = rec.normal
-			ni_over_nt = 1.0 / iof
-			cosine = -dot(r_in.direction, rec.normal) / r_in.direction.length
 		}
 
-		if let refracted = Refract(v: r_in.direction, n: outward_normal, ni_over_nt: ni_over_nt) {
+		// If refraction is posible scatter using the refracted ray
+		if let refracted = Refract(v: r_in.direction, n: normal, ni_over_nt: ni_over_nt) {
 			// Fake fresnel by randombly picking using Schlick
-			 if (drand48() < Schlick(cosine, iof: iof)) {
-				scattered = Ray(rec.p, reflected)
-			} else {
+			if (Schlick(cosine, iof: iof) < drand48()) {
 				scattered = Ray(rec.p, refracted)
 			}
-		} else {
-			// Reflected Ray
-			scattered = Ray(rec.p, reflected)
 		}
-
 		return (scattered, attenuation)
 	}
 }

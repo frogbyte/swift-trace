@@ -46,7 +46,7 @@ let pinkLambert = Lambertian(albedo: Vec3(0.8, 0.3, 0.3))
 let blueLambert = Lambertian(albedo: Vec3(0.1, 0.2, 0.5))
 let yellowLambert = Lambertian(albedo: Vec3(0.8, 0.8, 0))
 let mirrorMetal = Metal(albedo: Vec3(0.8, 0.8, 0.8), roughness: 0.3)
-let goldMetal = Metal(albedo: Vec3(0.8, 0.6, 0.2), roughness: 1.0)
+let goldMetal = Metal(albedo: Vec3(0.8, 0.6, 0.2), roughness: 0.5)
 let glassDielectric = Dielectric(albedo: Vec3(1, 1, 1), iof: 1.5)
 
 hitableCollection.append(Sphere(center: Vec3( 0,      0, -1), radius: 0.5, material: blueLambert))
