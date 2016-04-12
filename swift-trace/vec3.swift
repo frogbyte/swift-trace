@@ -66,7 +66,7 @@ func dot(v1: Vec3, _ v2: Vec3) -> Double {
     return v1.x * v2.x + v1.y * v2.y + v1.z * v2.z
 }
 
-func cross(v1: Vec3, v2: Vec3) -> Vec3 {
+func cross(v1: Vec3, _ v2: Vec3) -> Vec3 {
     return Vec3( v1.y*v2.z - v1.z*v2.y,
                 -v1.x*v2.z - v1.z*v2.x,
                  v1.x*v2.y - v1.y*v2.x)
