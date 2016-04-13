@@ -28,18 +28,17 @@ func RandomInUnitSphere() -> double3 {
 }
 
 func Reflect(v v: double3, n: double3) -> double3 {
-	return v - 2*dot(v,n)*n
+	return v - 2 * dot(v, n) * n
 }
 
 func Refract(v v: double3, n: double3, ni_over_nt: Double) -> double3? {
 	let unitV = normalize(v)
 	let dt = dot(unitV, n)
-	let discriminant = 1.0 - ni_over_nt * ni_over_nt * (1 - dt * dt)
-	if (discriminant > 0 ) {
-		return ni_over_nt*(v - n * dt) - n * sqrt(discriminant)
-	} else {
-		return nil
+	let discriminant = 1.0 - ni_over_nt * ni_over_nt * (1.0 - dt * dt)
+	if discriminant > 0 {
+		return ni_over_nt * (unitV - n * dt) - n * sqrt(discriminant)
 	}
+	return nil
 }
 
 func Schlick(cosine: Double, iof: Double) -> Double {
@@ -116,32 +115,4 @@ struct Dielectric: Material {
 		}
 		return (scattered, attenuation)
 	}
-}
-
-struct DielectricAlways: Material {
-    let albedo: double3
-    var ref_index: Double
-    
-    func scatter(ray_in ray_in: Ray, rec: HitRecord) -> (scattered:Ray, attenuation: double3) {
-        var scattered: Ray
-        var ni_over_nt: Double = 1
-        var outward_normal = double3()
-        let reflected = Reflect(v: ray_in.direction, n: rec.normal)
-        let attenuation = albedo
-        if dot(ray_in.direction, rec.normal) > 0 {
-            outward_normal = -rec.normal
-            ni_over_nt = ref_index
-        } else {
-            outward_normal = rec.normal
-            ni_over_nt = 1 / ref_index
-        }
-        let refracted = Refract(v: ray_in.direction, n: outward_normal, ni_over_nt: ni_over_nt)
-        if refracted != nil {
-            scattered = Ray(rec.p, refracted!)
-            return (scattered, attenuation)
-        } else {
-            scattered = Ray(rec.p, reflected)
-            return (scattered, attenuation)
-        }
-    }
 }

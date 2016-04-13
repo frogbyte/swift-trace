@@ -26,8 +26,8 @@ func getColor(r r: Ray, world: Hitable, maxDepth: Int = 4, currentDepth: Int = 0
     return (1 - t) * double3(1, 1, 1) + t * double3(0.5, 0.7, 1.0)
 }
 
-let res = 3
-let samples = 30
+let res = 1
+let samples = Clamp(20 * res, minValue: 1, maxValue: 150)
 let width = 200 * res
 let height = 100 * res
 
@@ -38,25 +38,31 @@ print("P3\n\(width) \(height)\n255")
 //var hitableCollection = [Hitable]()
 var hitableCollection = Scene()
 
+hitableCollection.append(Sphere(center: double3( 0, -100.5, -1),
+                                radius: 100,
+                                material: brownLambert,
+                                name: "Ground Sphere"))
 hitableCollection.append(Sphere(center: double3( 0, 0, -1),
                                 radius: 0.5,
                                 material: grayBlueLambert))
-hitableCollection.append(Sphere(center: double3( 0, -100.5, -1),
-                                radius: 100,
-                                material: brownLambert))
+hitableCollection.append(Sphere(center: double3(1.5, 1, 0.75),
+                                radius: -0.35,
+                                material: grayBlueLambert,
+                                name: "Cutout Sphere"))
 hitableCollection.append(Sphere(center: double3( 1, 0, -1),
                                 radius: 0.5,
                                 material: goldMetal))
 hitableCollection.append(Sphere(center: double3(-1, 0, -1),
                                 radius: 0.5,
-                                material: glassDielectric, name: "Glass Sphere"))
+                                material: glassDielectric,
+                                name: "Glass Sphere"))
 
-let lookFrom = double3(-2, 2, 0)
+let lookFrom = double3(-1.8, 0.55, 0)
 
 //let lookFrom = double3(0, 0, 0)
 let lookAt = double3(0, 0, -1)
 let vup = double3(0, 1, 0)
-let vfov = 90.0
+let vfov = 40.0
 let aspect = Double(width/height)
 let cam = Camera(lookFrom: lookFrom,
                  lookAt: lookAt,
@@ -64,6 +70,8 @@ let cam = Camera(lookFrom: lookFrom,
                  vfov: vfov,
                  aspect: aspect)
 // let cam = Camera()
+
+let timeStart = CFAbsoluteTimeGetCurrent()
 
 for py in (0..<height).reverse() {
     var color = double3()
@@ -86,3 +94,9 @@ for py in (0..<height).reverse() {
         print("\(icolor[0]) \(icolor[1]) \(icolor[2])")
     }
 }
+
+let timeEnd = CFAbsoluteTimeGetCurrent()
+let timeTotal = timeEnd - timeStart
+
+fputs("Time: \(timeTotal)\n", __stderrp)
+

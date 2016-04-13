@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01A412241CBD81E900A6D817 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121D1CBD81E900A6D817 /* camera.swift */; };
-		01A412251CBD81E900A6D817 /* defaultMaterials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */; };
-		01A412261CBD81E900A6D817 /* double3_extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121F1CBD81E900A6D817 /* double3_extend.swift */; };
-		01A412271CBD81E900A6D817 /* hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412201CBD81E900A6D817 /* hitable.swift */; };
-		01A412281CBD81E900A6D817 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412211CBD81E900A6D817 /* main.swift */; };
-		01A412291CBD81E900A6D817 /* materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412221CBD81E900A6D817 /* materials.swift */; };
-		01A4122A1CBD81E900A6D817 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412231CBD81E900A6D817 /* ray.swift */; };
+		01A412321CBE934700A6D817 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122B1CBE934700A6D817 /* camera.swift */; };
+		01A412331CBE934700A6D817 /* defaultMaterials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122C1CBE934700A6D817 /* defaultMaterials.swift */; };
+		01A412341CBE934700A6D817 /* double3_extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122D1CBE934700A6D817 /* double3_extend.swift */; };
+		01A412351CBE934700A6D817 /* hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122E1CBE934700A6D817 /* hitable.swift */; };
+		01A412361CBE934700A6D817 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122F1CBE934700A6D817 /* main.swift */; };
+		01A412371CBE934700A6D817 /* materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412301CBE934700A6D817 /* materials.swift */; };
+		01A412381CBE934700A6D817 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412311CBE934700A6D817 /* ray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -29,13 +29,13 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		01A4121D1CBD81E900A6D817 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = camera.swift; path = "swift-trace double3/camera.swift"; sourceTree = SOURCE_ROOT; };
-		01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = defaultMaterials.swift; path = "swift-trace double3/defaultMaterials.swift"; sourceTree = SOURCE_ROOT; };
-		01A4121F1CBD81E900A6D817 /* double3_extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = double3_extend.swift; path = "swift-trace double3/double3_extend.swift"; sourceTree = SOURCE_ROOT; };
-		01A412201CBD81E900A6D817 /* hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hitable.swift; path = "swift-trace double3/hitable.swift"; sourceTree = SOURCE_ROOT; };
-		01A412211CBD81E900A6D817 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-trace double3/main.swift"; sourceTree = SOURCE_ROOT; };
-		01A412221CBD81E900A6D817 /* materials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = materials.swift; path = "swift-trace double3/materials.swift"; sourceTree = SOURCE_ROOT; };
-		01A412231CBD81E900A6D817 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ray.swift; path = "swift-trace double3/ray.swift"; sourceTree = SOURCE_ROOT; };
+		01A4122B1CBE934700A6D817 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
+		01A4122C1CBE934700A6D817 /* defaultMaterials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = defaultMaterials.swift; sourceTree = "<group>"; };
+		01A4122D1CBE934700A6D817 /* double3_extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = double3_extend.swift; sourceTree = "<group>"; };
+		01A4122E1CBE934700A6D817 /* hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hitable.swift; sourceTree = "<group>"; };
+		01A4122F1CBE934700A6D817 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		01A412301CBE934700A6D817 /* materials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = materials.swift; sourceTree = "<group>"; };
+		01A412311CBE934700A6D817 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ray.swift; sourceTree = "<group>"; };
 		01F36E691CB4D0E400296359 /* swift-trace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-trace"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -69,13 +69,13 @@
 		01F36E6B1CB4D0E400296359 /* swift-trace */ = {
 			isa = PBXGroup;
 			children = (
-				01A412211CBD81E900A6D817 /* main.swift */,
-				01A412231CBD81E900A6D817 /* ray.swift */,
-				01A4121D1CBD81E900A6D817 /* camera.swift */,
-				01A412201CBD81E900A6D817 /* hitable.swift */,
-				01A412221CBD81E900A6D817 /* materials.swift */,
-				01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */,
-				01A4121F1CBD81E900A6D817 /* double3_extend.swift */,
+				01A4122F1CBE934700A6D817 /* main.swift */,
+				01A412311CBE934700A6D817 /* ray.swift */,
+				01A4122E1CBE934700A6D817 /* hitable.swift */,
+				01A4122B1CBE934700A6D817 /* camera.swift */,
+				01A412301CBE934700A6D817 /* materials.swift */,
+				01A4122C1CBE934700A6D817 /* defaultMaterials.swift */,
+				01A4122D1CBE934700A6D817 /* double3_extend.swift */,
 			);
 			path = "swift-trace";
 			sourceTree = "<group>";
@@ -137,13 +137,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01A4122A1CBD81E900A6D817 /* ray.swift in Sources */,
-				01A412291CBD81E900A6D817 /* materials.swift in Sources */,
-				01A412251CBD81E900A6D817 /* defaultMaterials.swift in Sources */,
-				01A412281CBD81E900A6D817 /* main.swift in Sources */,
-				01A412271CBD81E900A6D817 /* hitable.swift in Sources */,
-				01A412261CBD81E900A6D817 /* double3_extend.swift in Sources */,
-				01A412241CBD81E900A6D817 /* camera.swift in Sources */,
+				01A412381CBE934700A6D817 /* ray.swift in Sources */,
+				01A412341CBE934700A6D817 /* double3_extend.swift in Sources */,
+				01A412371CBE934700A6D817 /* materials.swift in Sources */,
+				01A412321CBE934700A6D817 /* camera.swift in Sources */,
+				01A412361CBE934700A6D817 /* main.swift in Sources */,
+				01A412351CBE934700A6D817 /* hitable.swift in Sources */,
+				01A412331CBE934700A6D817 /* defaultMaterials.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
