@@ -26,7 +26,7 @@ func getColor(r r: Ray, world: Hitable, maxDepth: Int = 4, currentDepth: Int = 0
     return (1 - t) * double3(1, 1, 1) + t * double3(0.5, 0.7, 1.0)
 }
 
-let res = 1
+let res = 4
 let samples = Clamp(20 * res, minValue: 1, maxValue: 150)
 let width = 200 * res
 let height = 100 * res
@@ -44,11 +44,8 @@ hitableCollection.append(Sphere(center: double3( 0, -100.5, -1),
                                 name: "Ground Sphere"))
 hitableCollection.append(Sphere(center: double3( 0, 0, -1),
                                 radius: 0.5,
-                                material: grayBlueLambert))
-hitableCollection.append(Sphere(center: double3(1.5, 1, 0.75),
-                                radius: -0.35,
                                 material: grayBlueLambert,
-                                name: "Cutout Sphere"))
+                                name: "Blue Sphere"))
 hitableCollection.append(Sphere(center: double3( 1, 0, -1),
                                 radius: 0.5,
                                 material: goldMetal))

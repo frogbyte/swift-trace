@@ -87,7 +87,7 @@ struct Metal : Material {
 
 struct Dielectric: Material {
 	let albedo: double3
-	let iof: Double
+	let ior: Double
 	
 	func scatter(ray_in ray_in: Ray, rec: HitRecord) -> (scattered:Ray, attenuation: double3) {		
 		let attenuation = albedo
@@ -96,20 +96,20 @@ struct Dielectric: Material {
 		var scattered = Ray(rec.p, reflected)
 
 		var normal = rec.normal
-		var ni_over_nt = 1.0 / iof
+		var ni_over_nt = 1.0 / ior
 		var cosine = -dot(ray_in.direction, rec.normal) / length(ray_in.direction)
 
 		// Inside the object
 		if dot(ray_in.direction, rec.normal) > 0 {
 			normal = -rec.normal
-			ni_over_nt = iof
-			cosine = iof * dot(ray_in.direction, rec.normal) / length(ray_in.direction)
+			ni_over_nt = ior
+			cosine = ior * dot(ray_in.direction, rec.normal) / length(ray_in.direction)
 		}
 
 		// If refraction is posible scatter using the refracted ray
 		if let refracted = Refract(v: ray_in.direction, n: normal, ni_over_nt: ni_over_nt) {
 			// Fake fresnel by randombly picking using Schlick
-			if (Schlick(cosine, iof: iof) < drand48()) {
+			if (Schlick(cosine, iof: ior) < drand48()) {
 				scattered = Ray(rec.p, refracted)
 			}
 		}
