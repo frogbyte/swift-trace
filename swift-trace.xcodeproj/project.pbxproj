@@ -7,12 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		01F36E6D1CB4D0E400296359 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E6C1CB4D0E400296359 /* main.swift */; };
-		01F36E741CB4D28300296359 /* vec3.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E731CB4D28300296359 /* vec3.swift */; };
-		01F36E771CB4D31400296359 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E751CB4D31400296359 /* camera.swift */; };
-		01F36E781CB4D31400296359 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E761CB4D31400296359 /* ray.swift */; };
-		01F36E7B1CB4D4DC00296359 /* hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E791CB4D4DC00296359 /* hitable.swift */; };
-		01F36E7C1CB4D4DC00296359 /* materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F36E7A1CB4D4DC00296359 /* materials.swift */; };
+		01A412241CBD81E900A6D817 /* camera.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121D1CBD81E900A6D817 /* camera.swift */; };
+		01A412251CBD81E900A6D817 /* defaultMaterials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */; };
+		01A412261CBD81E900A6D817 /* double3_extend.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4121F1CBD81E900A6D817 /* double3_extend.swift */; };
+		01A412271CBD81E900A6D817 /* hitable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412201CBD81E900A6D817 /* hitable.swift */; };
+		01A412281CBD81E900A6D817 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412211CBD81E900A6D817 /* main.swift */; };
+		01A412291CBD81E900A6D817 /* materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412221CBD81E900A6D817 /* materials.swift */; };
+		01A4122A1CBD81E900A6D817 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412231CBD81E900A6D817 /* ray.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -28,13 +29,14 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		01A4121D1CBD81E900A6D817 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = camera.swift; path = "swift-trace double3/camera.swift"; sourceTree = SOURCE_ROOT; };
+		01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = defaultMaterials.swift; path = "swift-trace double3/defaultMaterials.swift"; sourceTree = SOURCE_ROOT; };
+		01A4121F1CBD81E900A6D817 /* double3_extend.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = double3_extend.swift; path = "swift-trace double3/double3_extend.swift"; sourceTree = SOURCE_ROOT; };
+		01A412201CBD81E900A6D817 /* hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = hitable.swift; path = "swift-trace double3/hitable.swift"; sourceTree = SOURCE_ROOT; };
+		01A412211CBD81E900A6D817 /* main.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = main.swift; path = "swift-trace double3/main.swift"; sourceTree = SOURCE_ROOT; };
+		01A412221CBD81E900A6D817 /* materials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = materials.swift; path = "swift-trace double3/materials.swift"; sourceTree = SOURCE_ROOT; };
+		01A412231CBD81E900A6D817 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ray.swift; path = "swift-trace double3/ray.swift"; sourceTree = SOURCE_ROOT; };
 		01F36E691CB4D0E400296359 /* swift-trace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-trace"; sourceTree = BUILT_PRODUCTS_DIR; };
-		01F36E6C1CB4D0E400296359 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
-		01F36E731CB4D28300296359 /* vec3.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = vec3.swift; sourceTree = "<group>"; };
-		01F36E751CB4D31400296359 /* camera.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = camera.swift; sourceTree = "<group>"; };
-		01F36E761CB4D31400296359 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ray.swift; sourceTree = "<group>"; };
-		01F36E791CB4D4DC00296359 /* hitable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = hitable.swift; sourceTree = "<group>"; };
-		01F36E7A1CB4D4DC00296359 /* materials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = materials.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -67,12 +69,13 @@
 		01F36E6B1CB4D0E400296359 /* swift-trace */ = {
 			isa = PBXGroup;
 			children = (
-				01F36E6C1CB4D0E400296359 /* main.swift */,
-				01F36E731CB4D28300296359 /* vec3.swift */,
-				01F36E791CB4D4DC00296359 /* hitable.swift */,
-				01F36E7A1CB4D4DC00296359 /* materials.swift */,
-				01F36E751CB4D31400296359 /* camera.swift */,
-				01F36E761CB4D31400296359 /* ray.swift */,
+				01A412211CBD81E900A6D817 /* main.swift */,
+				01A412231CBD81E900A6D817 /* ray.swift */,
+				01A4121D1CBD81E900A6D817 /* camera.swift */,
+				01A412201CBD81E900A6D817 /* hitable.swift */,
+				01A412221CBD81E900A6D817 /* materials.swift */,
+				01A4121E1CBD81E900A6D817 /* defaultMaterials.swift */,
+				01A4121F1CBD81E900A6D817 /* double3_extend.swift */,
 			);
 			path = "swift-trace";
 			sourceTree = "<group>";
@@ -134,12 +137,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				01F36E7C1CB4D4DC00296359 /* materials.swift in Sources */,
-				01F36E7B1CB4D4DC00296359 /* hitable.swift in Sources */,
-				01F36E781CB4D31400296359 /* ray.swift in Sources */,
-				01F36E771CB4D31400296359 /* camera.swift in Sources */,
-				01F36E741CB4D28300296359 /* vec3.swift in Sources */,
-				01F36E6D1CB4D0E400296359 /* main.swift in Sources */,
+				01A4122A1CBD81E900A6D817 /* ray.swift in Sources */,
+				01A412291CBD81E900A6D817 /* materials.swift in Sources */,
+				01A412251CBD81E900A6D817 /* defaultMaterials.swift in Sources */,
+				01A412281CBD81E900A6D817 /* main.swift in Sources */,
+				01A412271CBD81E900A6D817 /* hitable.swift in Sources */,
+				01A412261CBD81E900A6D817 /* double3_extend.swift in Sources */,
+				01A412241CBD81E900A6D817 /* camera.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,13 +235,18 @@
 		01F36E711CB4D0E400296359 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		01F36E721CB4D0E400296359 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -261,6 +270,7 @@
 				01F36E721CB4D0E400296359 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

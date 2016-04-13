@@ -8,15 +8,16 @@
 
 import Foundation
 import Darwin
+import simd
 
 struct HitRecord {
 	var t: Double
-	var p: Vec3 
-	var normal: Vec3
+	var p: double3 
+	var normal: double3
 	var material: Material
     var primName: String?
     
-    init(t: Double, p: Vec3, normal: Vec3, material: Material){
+    init(t: Double, p: double3, normal: double3, material: Material){
         self.t = t
         self.p = p
         self.normal = normal
@@ -24,7 +25,7 @@ struct HitRecord {
         self.primName = nil
     }
     
-    init(t: Double, p: Vec3, normal: Vec3, material: Material, primName: String){
+    init(t: Double, p: double3, normal: double3, material: Material, primName: String){
         self.t = t
         self.p = p
         self.normal = normal
@@ -37,29 +38,24 @@ protocol Hitable {
 	 func hit(r r: Ray, t_min: Double, t_max: Double) -> HitRecord?
 }
 
-class World: Hitable {
-	var members: [Hitable] = []
-	func append(item: Hitable) {
-		members.append(item)
+struct Scene: Hitable {
+	var list: [Hitable] = []
+
+	mutating func append(item: Hitable) {
+		list.append(item)
 	}
+
 	func hit(r r: Ray, t_min: Double, t_max: Double) -> HitRecord? {
-		var closest = t_max
 		var record: HitRecord?
-		
-		for hitable in members{
-			guard let temp_record = hitable.hit(r: r, t_min: t_min, t_max: closest) else { continue }
-			if temp_record.t < closest {
-				// fputs("closest first : \(closest)\n", __stderrp)
-				closest = temp_record.t
-				record = temp_record
-			}// else {
-				// fputs("closest second: \(closest)\n", __stderrp)
-		  //   }
+
+		for item in list {
+			if let hit = item.hit(r: r, t_min: t_min, t_max: record?.t ?? t_max) { 
+				record = hit
+			}
 		}
 		return record
 	}
 }
-
 
 //extension CollectionType where Generator.Element : Hitable {
 //    func hit(r r: Ray, t_min: Double, t_max: Double) -> HitRecord? {
@@ -105,19 +101,19 @@ extension Array where Element:Hitable {
 } */
 
 struct Sphere : Hitable {
-	var center: Vec3
+	var center: double3
 	var radius: Double
 	var material: Material
 	var name: String
 	
-    init(center: Vec3, radius: Double, material: Material) {
+    init(center: double3, radius: Double, material: Material) {
 		self.center = center
 		self.radius = radius
 		self.material = material
 		self.name = "Un-named Sphere"
     }
 
-    init(center: Vec3, radius: Double, material: Material, name: String) {
+    init(center: double3, radius: Double, material: Material, name: String) {
 		self.center = center
 		self.radius = radius
 		self.material = material
