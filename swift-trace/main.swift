@@ -27,6 +27,7 @@ func getColor(r r: Ray, world: Hitable, maxDepth: Int = 4, currentDepth: Int = 0
 }
 
 let res = 4
+let maxDepth = 5
 let samples = Clamp(20 * res, minValue: 1, maxValue: 150)
 let width = 200 * res
 let height = 100 * res
@@ -54,19 +55,36 @@ hitableCollection.append(Sphere(center: double3(-1, 0, -1),
                                 material: glassDielectric,
                                 name: "Glass Sphere"))
 
-let lookFrom = double3(-1.8, 0.55, 0)
 
-//let lookFrom = double3(0, 0, 0)
-let lookAt = double3(0, 0, -1)
-let vup = double3(0, 1, 0)
-let vfov = 40.0
-let aspect = Double(width/height)
+let lookFrom, lookAt, vup : double3
+let vfov, aspect, aperture, focus_dist : Double
+
+//lookFrom = double3(-1.8, 0.55, 0)
+//lookFrom = double3(0, 0, 0)
+lookFrom = double3(3, 3, 2)
+lookAt = double3(0, 0, -1)
+vup = double3(0, 1, 0)
+//vfov = 90.0
+vfov = 20
+aspect = Double(width/height)
+aperture = 2.0
+focus_dist = length(lookFrom - lookAt)
+
 let cam = Camera(lookFrom: lookFrom,
                  lookAt: lookAt,
                  vup:vup,
                  vfov: vfov,
-                 aspect: aspect)
-// let cam = Camera()
+                 aspect: aspect,
+                 aperture: aperture,
+                 focus_dist: focus_dist)
+
+//let cam = CameraPinhole(lookFrom: lookFrom,
+//                        lookAt: lookAt,
+//                        vup:vup,
+//                        vfov: vfov,
+//                        aspect: aspect)
+
+//cam = Camera()
 
 let timeStart = CFAbsoluteTimeGetCurrent()
 
@@ -79,7 +97,7 @@ for py in (0..<height).reverse() {
             let u = ran_px / Double(width)
             let v = ran_py  / Double(height)
             let r = cam.getRay(u: u, v: v)
-            let sampleColor = getColor(r: r, world: hitableCollection, maxDepth: 5)
+            let sampleColor = getColor(r: r, world: hitableCollection, maxDepth: maxDepth)
             color += sampleColor
         }
         

@@ -10,3 +10,5 @@ let mirrorMetal = Metal(albedo: double3(0.8, 0.8, 0.8), roughness: 0.3)
 let goldMetal = Metal(albedo: double3(0.9, 0.7, 0.2), roughness: 0.5)
 let glassDielectric = Dielectric(albedo: double3(1, 1, 1), ior: 1.6)
 let airDielectric = Dielectric(albedo: double3(1, 1, 1), ior: 1.0)
+
+//let fresnel = LambertianFresnel(albedo: double3(0.1, 0.2, 0.5))
