@@ -26,11 +26,46 @@ func getColor(r r: Ray, world: Hitable, maxDepth: Int = 4, currentDepth: Int = 0
     return (1 - t) * double3(1, 1, 1) + t * double3(0.5, 0.7, 1.0)
 }
 
-let res = 4
+func writePixels(width: Int, height: Int, minSamples: Int, maxSamples: Int, cam: camera, scene: Scene, maxBounces: Int) -> [double3] {
+    var pixels : [double3] = []
+    var samples : Int = 1
+    for py in (0..<height).reverse() {
+        var color = double3()
+        for px in 0..<width {
+            for _ in 1..<maxSamples{
+                samples += 1
+                let ran_px = Double(px) + drand48()
+                let ran_py = Double(py) + drand48()
+                let u = ran_px / Double(width)
+                let v = ran_py  / Double(height)
+                let r = cam.getRay(u: u, v: v)
+                let sampleColor = getColor(r: r, world: scene, maxDepth: maxBounces)
+                color += sampleColor
+            }
+            
+            color /= Double(samples)
+            pixels.append(color)
+            // gamma correction 2.0
+            color = double3(sqrt(color.x), sqrt(color.y), sqrt(color.z))
+            let icolor = [Int(color.x * 255), Int(color.y * 255), Int(color.z * 255)]
+            
+            print("\(icolor[0]) \(icolor[1]) \(icolor[2])")
+        }
+    }
+    return pixels
+}
+
+let res = 2.5
 let maxDepth = 5
-let samples = Clamp(20 * res, minValue: 1, maxValue: 150)
-let width = 200 * res
-let height = 100 * res
+let samples = Int(Clamp(8 * res, minValue: 1, maxValue: 150))
+let width = Int(200 * res)
+let height = Int(100 * res)
+
+fputs("Max Bounces: \(maxDepth)\n", __stderrp)
+fputs("Samples Per Pixel: \(samples)\n", __stderrp)
+fputs("Image Dimentions: \(width) x \(height)\n", __stderrp)
+
+let timeStartScene = CFAbsoluteTimeGetCurrent()
 
 
 // ppm header
@@ -39,35 +74,38 @@ print("P3\n\(width) \(height)\n255")
 //var hitableCollection = [Hitable]()
 var hitableCollection = Scene()
 
-hitableCollection.append(Sphere(center: double3( 0, -100.5, -1),
-                                radius: 100,
-                                material: brownLambert,
+hitableCollection.append(Sphere(center: double3( 0, -1000, 0),
+                                radius: 1000,
+                                material: grayLambert,
                                 name: "Ground Sphere"))
-hitableCollection.append(Sphere(center: double3( 0, 0, -1),
-                                radius: 0.5,
+
+hitableCollection.append(Sphere(center: double3( -4, 1, 0),
+                                radius: 1,
                                 material: grayBlueLambert,
                                 name: "Blue Sphere"))
-hitableCollection.append(Sphere(center: double3( 1, 0, -1),
-                                radius: 0.5,
-                                material: goldMetal))
-hitableCollection.append(Sphere(center: double3(-1, 0, -1),
-                                radius: 0.5,
+
+hitableCollection.append(Sphere(center: double3( 4, 1, 0),
+                                radius: 1,
+                                material: mirrorMetal))
+
+hitableCollection.append(Sphere(center: double3(0, 1, 0),
+                                radius: 1,
                                 material: glassDielectric,
                                 name: "Glass Sphere"))
+
+
+hitableCollection.list.appendContentsOf(RandomSpheres(numberOfSpheres: 200, gridSize: 11))
 
 
 let lookFrom, lookAt, vup : double3
 let vfov, aspect, aperture, focus_dist : Double
 
-//lookFrom = double3(-1.8, 0.55, 0)
-//lookFrom = double3(0, 0, 0)
-lookFrom = double3(3, 3, 2)
-lookAt = double3(0, 0, -1)
+lookFrom = double3(8.5, 1.25, 2.5)
+lookAt = double3(0, 1, 0.25)
 vup = double3(0, 1, 0)
-//vfov = 90.0
-vfov = 20
+vfov = 30
 aspect = Double(width/height)
-aperture = 2.0
+aperture = 0.2
 focus_dist = length(lookFrom - lookAt)
 
 let cam = Camera(lookFrom: lookFrom,
@@ -78,16 +116,16 @@ let cam = Camera(lookFrom: lookFrom,
                  aperture: aperture,
                  focus_dist: focus_dist)
 
-//let cam = CameraPinhole(lookFrom: lookFrom,
-//                        lookAt: lookAt,
-//                        vup:vup,
-//                        vfov: vfov,
-//                        aspect: aspect)
+let timeEndScene = CFAbsoluteTimeGetCurrent()
+let timeSceneBuild = timeEndScene - timeStartScene
 
-//cam = Camera()
+fputs("Scene Build Time: \(timeSceneBuild)\n", __stderrp)
 
-let timeStart = CFAbsoluteTimeGetCurrent()
+let timeStartTrace = CFAbsoluteTimeGetCurrent()
 
+
+//let queue = dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)
+//dispatch_apply(height, queue) { py in
 for py in (0..<height).reverse() {
     var color = double3()
     for px in 0..<width {
@@ -110,8 +148,11 @@ for py in (0..<height).reverse() {
     }
 }
 
-let timeEnd = CFAbsoluteTimeGetCurrent()
-let timeTotal = timeEnd - timeStart
+let timeEndTrace = CFAbsoluteTimeGetCurrent()
+let timeTrace = timeEndTrace - timeStartTrace
+let timeTotal = timeEndTrace - timeStartScene
 
-fputs("Time: \(timeTotal)\n", __stderrp)
+fputs("Trace Time: \(timeTrace)\n", __stderrp)
+fputs("Total Time: \(timeTotal)\n", __stderrp)
+
 

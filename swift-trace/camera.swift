@@ -17,7 +17,12 @@ func RandomInUnitDisk() -> double3 {
     return p
 }
 
-struct Camera {
+
+protocol camera {
+    func getRay(u s: Double, v t: Double) -> Ray
+}
+
+struct Camera : camera {
     var lower_left_corner, horizontal, vertical, u, v, w : double3
     var lens_radius: Double
     

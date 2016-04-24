@@ -14,6 +14,7 @@
 		01A412361CBE934700A6D817 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A4122F1CBE934700A6D817 /* main.swift */; };
 		01A412371CBE934700A6D817 /* materials.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412301CBE934700A6D817 /* materials.swift */; };
 		01A412381CBE934700A6D817 /* ray.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01A412311CBE934700A6D817 /* ray.swift */; };
+		01F8475E1CC89B5200C781A1 /* randomScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 01F8475D1CC89B5200C781A1 /* randomScene.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -37,6 +38,7 @@
 		01A412301CBE934700A6D817 /* materials.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = materials.swift; sourceTree = "<group>"; };
 		01A412311CBE934700A6D817 /* ray.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ray.swift; sourceTree = "<group>"; };
 		01F36E691CB4D0E400296359 /* swift-trace */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = "swift-trace"; sourceTree = BUILT_PRODUCTS_DIR; };
+		01F8475D1CC89B5200C781A1 /* randomScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = randomScene.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 			isa = PBXGroup;
 			children = (
 				01A4122F1CBE934700A6D817 /* main.swift */,
+				01F8475D1CC89B5200C781A1 /* randomScene.swift */,
 				01A412311CBE934700A6D817 /* ray.swift */,
 				01A4122E1CBE934700A6D817 /* hitable.swift */,
 				01A4122B1CBE934700A6D817 /* camera.swift */,
@@ -140,6 +143,7 @@
 				01A412381CBE934700A6D817 /* ray.swift in Sources */,
 				01A412341CBE934700A6D817 /* double3_extend.swift in Sources */,
 				01A412371CBE934700A6D817 /* materials.swift in Sources */,
+				01F8475E1CC89B5200C781A1 /* randomScene.swift in Sources */,
 				01A412321CBE934700A6D817 /* camera.swift in Sources */,
 				01A412361CBE934700A6D817 /* main.swift in Sources */,
 				01A412351CBE934700A6D817 /* hitable.swift in Sources */,
